@@ -6,25 +6,34 @@ import 'pages/bloc_builder_page.dart';
 import 'pages/bloc_consumer_page.dart';
 import 'pages/bloc_listener_page.dart';
 import 'pages/bloc_provider_page.dart';
-import '/pages/bloc_provider_value_page.dart';
+import 'pages/bloc_provider_value_page.dart';
+import 'router/router.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final router = MyRouter();
 
   @override
   Widget build(BuildContext context) {
-    //* Menggunakan bloc provider di dalam MaterialApp (disarankan menggunakan bloc provider value untuk provider lagi didalamnya)
+    //* Menggunakan bloc provider dengan generated route access
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BlocProvider(
-        create: (context) => CounterCubit(),
-        child: BlocProviderValuePage(),
-      ),
+      onGenerateRoute: router.onRoute,
     );
+
+    //* Menggunakan bloc provider di dalam MaterialApp (disarankan menggunakan bloc provider value untuk provider lagi didalamnya)
+    // return MaterialApp(
+    //   debugShowCheckedModeBanner: false,
+    //   home: BlocProvider(
+    //     create: (context) => CounterCubit(),
+    //     child: BlocProviderValuePage(),
+    //   ),
+    // );
 
     //* Menggunakan bloc provider di atas MaterialApp
     // return BlocProvider(
