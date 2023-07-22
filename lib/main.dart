@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'pages/bloc_builder_page.dart';
+import 'pages/bloc_consumer_page.dart';
 import 'pages/bloc_listener_page.dart';
 
 void main() {
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: BlocBuilderPage(), // latihan bloc builder
-      home: BlocListenerPage(), // latihan bloc listener
+      // home: BlocListenerPage(), // latihan bloc listener
+      home: BlocConsumerPage(), // latihan bloc consumer
     );
   }
 }
