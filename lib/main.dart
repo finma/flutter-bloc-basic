@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_basic/bloc/user_bloc.dart';
 
 import 'bloc/counter_bloc.dart';
 import 'bloc/theme_bloc.dart';
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<ThemeBloc>(
           create: (context) => ThemeBloc(),
+        ),
+        BlocProvider<UserBloc>(
+          create: (context) => UserBloc(),
         ),
       ],
       // child: App(),
