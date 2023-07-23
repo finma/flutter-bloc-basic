@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_basic/pages/bloc_multi_listener.dart';
 import 'package:flutter_bloc_basic/pages/not_found.dart';
 import 'package:flutter_bloc_basic/pages/other_page.dart';
 
@@ -15,7 +16,8 @@ class MyRouter {
         return MaterialPageRoute(
           builder: (context) => BlocProvider.value(
             value: counterCubit,
-            child: BlocProviderValuePage(),
+            // child: BlocProviderValuePage(),
+            child: BlocMultiListenerPage(),
           ),
         );
       case '/other_page':

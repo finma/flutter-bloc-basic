@@ -17,6 +17,8 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
+  final router = MyRouter();
+
   @override
   Widget build(BuildContext context) {
     //* Menggunakan multi bloc provider
@@ -29,7 +31,18 @@ class MyApp extends StatelessWidget {
           create: (context) => ThemeBloc(),
         ),
       ],
-      child: App(),
+      // child: App(),
+      child: BlocBuilder<ThemeBloc, bool>(
+        // bloc: themeBloc,
+        builder: (context, state) {
+          return MaterialApp(
+            theme: state == true ? ThemeData.light() : ThemeData.dark(),
+            debugShowCheckedModeBanner: false,
+            onGenerateRoute: router.onRoute,
+            // home: BlocProviderValuePage(),
+          );
+        },
+      ),
     );
 
     //* Menggunakan bloc provider dengan generated route access
@@ -75,10 +88,10 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeBloc themeBloc = context.read<ThemeBloc>();
+    // ThemeBloc themeBloc = context.read<ThemeBloc>();
 
-    return BlocBuilder(
-      bloc: themeBloc,
+    return BlocBuilder<ThemeBloc, bool>(
+      // bloc: themeBloc,
       builder: (context, state) {
         return MaterialApp(
           theme: state == true ? ThemeData.light() : ThemeData.dark(),
